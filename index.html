@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/home.css" rel="stylesheet" type="text/css">
+    <link href="./public/css/home.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet">
@@ -18,8 +18,8 @@
         </section>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/instrument.ejs">Instruments</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="instrument.html">Instruments</a></li>
                 <li><a href="#">Project</a></li>
             </ul>
         </nav>
@@ -35,13 +35,9 @@
             <h3>Chat: </h3>
             <section id="two">
                 <ul class="quotes">
-                    <% for(let i = 0; i < info.length; i++) {%>
-                        <li class="quote">
-                            <span class="name"><%= info[i].statD %></span><span>:   </span>
-                            <span><%= info[i].chats %></span>
-                            <span><%= info[i].time %></span>
-                        </li>
-                    <% } %>
+                    <li><span class="name">test </span>test test</li>
+                    <li>test test test</li>
+                    <li>test test test</li>
                     </ul>
         </section>
         <form action="/chat" method="POST">

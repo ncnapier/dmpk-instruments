@@ -15,10 +15,10 @@
     
 // }
 //add date and time to form
-// function addDateChat(){
-//   document.getElementById('time').value = new Date();
-// }
-// addDateChat()
+ function addDateChat(){
+   document.getElementById('time').value = new Date();
+ }
+ addDateChat()
 //dmpk letter colors
 
 function letterColor() {

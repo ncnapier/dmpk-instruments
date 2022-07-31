@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet">
+    <title>DMPK Instruments</title>
+</head>
+<body>
+    <header>
+      
+        <section id="dmpk">
+          <h1><span id ="D">D</span><span id="M">M</span><span id="P">P</span><span id="K">K</span> Lab</h1>
+        </section>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/instrument.ejs">Instruments</a></li>
+                <li><a href="#">Projects</a></li>
+            </ul>
+        </nav>
+    
+
+    </header>
+    <h2>INSTRUMENT STATUS:</h2>
+    <main>
+        <section id="4500" class="inst">
+            <h2>4500</h2>
+            <section id="state">
+            <div class="allState" id="allStat4500">
+            
+            <section class="form1">
+                
+              <form action="/instrument" method="POST">
+                <label for="stat">Instrument Status:</label>
+                <select id="stat" name="stat">
+                  <!-- <option value="available">Available</option> -->
+                  <option value="inuse">In Use</option>
+                  <option value="reserved">Reserved</option>
+                  <option value="maint">Maintenance</option>
+                </select>
+                
+              <br><br>
+            
+                  <label for="date">Run Date: </label>
+                  <input type="datetime-local" id="date" name="date"></input>
+              <br><br>
+            
+                <label for="dateend">Estimated End of Run: </label>
+                <input type="datetime-local" id="dateend" name="dateend"></input>
+            <br><br>
+            
+                  <!-- <label for="init">User Initials</label> -->
+                  
+                  <label for="init" id="init" name="init">User</label>
+                  <select  id="init" name="init">
+                    <option>Nathaniel</option>
+                    <option>Katherine</option>
+                    <option>Sichen</option>
+                    <option>Chandra</option>
+                    <option>Irene</option>
+                    <option>Olivier</option>
+                    <option>Lauren</option>
+                    </select>
+                  
+                  <br><br>
+                  <button class="button" id="submit" type="submit">Submit</button>
+              </form>
+              
+            </section>
+            <section class="currentInstStatus" id="4500InstStat">
+            
+            
+                
+            
+            <section id="infos">
+                <ul class="infos" id="list">
+                    <% for(let i=0; i < info.length; i++) {%>
+                        <%let currentDate = new Date()%>
+                        
+                       
+                        <% if(info[i].dateend != null){%>
+                        <li class="listItem">
+                            <span ><%= info[i].init %>:</span><br>
+                            <span class="stat" ><%= info[i].stat %></span><br>
+                            <span ><%= info[i].date %>-<%= info[i].dateend %></span>
+                            
+                        </li>
+                    <% } %>
+                    <% } %>
+              <!-- <span id="instStatC"></span>
+              <span id="runDateC"></span>
+              <span id="endDateC"></span>
+              <span id="initEC"></span> -->
+              </ul>
+            
+            
+            
+        </section>
+        </section>
+          </div>
+            
+            <div class="asTray" id="4500asTray">
+              <label for="trayOne">Tray 1</label>
+              <input type="text" id="trayOne" name="trayOne">
+              
+              
+            
+            
+              <label for="trayTwo">Tray 2</label>
+              <input type="text" id="trayTwo" name="trayTwo">
+              
+              <label for="trayThree">Tray 3</label>
+              <input type="text" id="trayThree" name="trayThree">
+              
+              <label for="trayFour">Tray 4</label>
+              <input type="text" id="trayFour" name="trayFour">
+              
+              <label for="trayFive">Tray 5</label>
+              <input type="text" id="trayFive" name="trayFive">
+              
+              <label for="traySix">Tray 6</label>
+              <input type="text" id="traySix" name="traySix">
+              
+              
+            </div>
+          
+        </section>
+        <!-- <section id="4500acc" class="acc">
+          <h3>Column: </h3><span></span>
+          <h3>Source Clean: </h3><span></span>
+          <h3>Solvents: </h3><span></span>
+        </section> -->
+        </section>
+        <section id="5500" class="inst">
+            <h2>5500</h2>
+            <section id="stateB">
+            <div class="allState" id="allStat5500">
+            
+            <section class="form1">
+                
+              <form action="/instrument" method="POST">
+                <label for="statB">Instrument Status:</label>
+                <select id="statB" name="statB">
+                  <!-- <option value="available">Available</option> -->
+                  <option value="inuse">In Use</option>
+                  <option value="reserved">Reserved</option>
+                  <option value="maint">Maintenance</option>
+                </select>
+                
+              <br><br>
+            
+                  <label for="dateB">Run Date: </label>
+                  <input type="datetime-local" id="dateB" name="dateB"></input>
+              <br><br>
+            
+                <label for="dateendB">Estimated End of Run: </label>
+                <input type="datetime-local" id="dateendB" name="dateendB"></input>
+            <br><br>
+            
+                  <!-- <label for="init">User Initials</label> -->
+                  
+                  <label for="initB" id="initB" name="initB">User</label>
+                  <select  id="initB" name="initB">
+                    <option>Nathaniel</option>
+                    <option>Katherine</option>
+                    <option>Sichen</option>
+                    <option>Chandra</option>
+                    <option>Irene</option>
+                    <option>Olivier</option>
+                    <option>Lauren</option>
+                    </select>
+                  
+                  <br><br>
+                  <button class="button" id="submit" type="submit">Submit</button>
+              </form>
+              
+            </section>
+            <section class="currentInstStatus" id="5500InstStat">
+            
+            
+                
+            
+            <section id="infosB">
+                <ul class="infosB" id="listB">
+                    <% for(let i=0; i < info.length; i++) {%>
+                        <% if(info[i].dateendB != null && info[i].dateendB != ""){%>
+                        <li class="listItem">
+                            <span ><%= info[i].initB %>:</span><br>
+                            <span class="stat"><%= info[i].statB %></span><br>
+                            <span ><%= info[i].dateB %>-<%= info[i].dateendB %></span>
+                            
+                        </li>
+                    <% } %>
+                    <% } %>
+              <!-- <span id="instStatC"></span>
+              <span id="runDateC"></span>
+              <span id="endDateC"></span>
+              <span id="initEC"></span> -->
+              </ul>
+            
+            
+            
+        </section>
+        </section>
+          </div>
+            
+            <div class="asTray" id="4500asTray">
+              <label for="trayOne">Tray 1</label>
+              <input type="text" id="trayOne" name="trayOne">
+              
+              
+            
+            
+              <label for="trayTwo">Tray 2</label>
+              <input type="text" id="trayTwo" name="trayTwo">
+              
+              <label for="trayThree">Tray 3</label>
+              <input type="text" id="trayThree" name="trayThree">
+              
+              <label for="trayFour">Tray 4</label>
+              <input type="text" id="trayFour" name="trayFour">
+              
+              <label for="trayFive">Tray 5</label>
+              <input type="text" id="trayFive" name="trayFive">
+              
+              <label for="traySix">Tray 6</label>
+              <input type="text" id="traySix" name="traySix">
+              
+              
+            </div>
+          
+        </section>
+        <!-- <section id="4500acc" class="acc">
+          <h3>Column: </h3><span></span>
+          <h3>Source Clean: </h3><span></span>
+          <h3>Solvents: </h3><span></span>
+        </section> -->
+        </section>
+        <section id="4000_02" class="inst">
+            <h2>4000_02</h2>
+            <section id="stateC">
+            <div class="allState" id="allStat4000_02">
+            
+            <section class="form1">
+                
+              <form action="/instrument" method="POST">
+                <label for="statC">Instrument Status:</label>
+                <select id="statC" name="statC">
+                  <!-- <option value="available">Available</option> -->
+                  <option value="inuse">In Use</option>
+                  <option value="reserved">Reserved</option>
+                  <option value="maint">Maintenance</option>
+                </select>
+                
+              <br><br>
+            
+                  <label for="dateC">Run Date: </label>
+                  <input type="datetime-local" id="dateC" name="dateC"></input>
+              <br><br>
+            
+                <label for="dateendC">Estimated End of Run: </label>
+                <input type="datetime-local" id="dateendC" name="dateendC"></input>
+            <br><br>
+            
+                  <!-- <label for="init">User Initials</label> -->
+                  
+                  <label for="initC" id="initC" name="initC">User</label>
+                  <select  id="initC" name="initC">
+                    <option>Nathaniel</option>
+                    <option>Katherine</option>
+                    <option>Sichen</option>
+                    <option>Chandra</option>
+                    <option>Irene</option>
+                    <option>Olivier</option>
+                    <option>Lauren</option>
+                    </select>
+                  
+                  <br><br>
+                  <button class="button" id="submit" type="submit">Submit</button>
+              </form>
+              
+            </section>
+            <section class="currentInstStatus" id="4000_02InstStat">
+            
+            
+                
+            
+            <section id="infosC">
+                <ul class="infosC" id="listC">
+                    <% for(let i=0; i < info.length; i++) {%>
+                        <% if(info[i].dateendC != null && info[i].dateendC != ""){%>
+                        <li class="listItem">
+                            <span ><%= info[i].initC %>:</span><br>
+                            <span class="stat"><%= info[i].statC %></span><br>
+                            <span ><%= info[i].dateC %>-<%= info[i].dateendC %></span>
+                            
+                        </li>
+                    <% } %>
+                    <% } %>
+              <!-- <span id="instStatC"></span>
+              <span id="runDateC"></span>
+              <span id="endDateC"></span>
+              <span id="initEC"></span> -->
+              </ul>
+            
+            
+            
+        </section>
+        </section>
+          </div>
+            
+            <div class="asTray" id="4500asTray">
+              <label for="trayOne">Tray 1</label>
+              <input type="text" id="trayOne" name="trayOne">
+              
+              
+            
+            
+              <label for="trayTwo">Tray 2</label>
+              <input type="text" id="trayTwo" name="trayTwo">
+              
+              <label for="trayThree">Tray 3</label>
+              <input type="text" id="trayThree" name="trayThree">
+              
+              <label for="trayFour">Tray 4</label>
+              <input type="text" id="trayFour" name="trayFour">
+              
+              <label for="trayFive">Tray 5</label>
+              <input type="text" id="trayFive" name="trayFive">
+              
+              <label for="traySix">Tray 6</label>
+              <input type="text" id="traySix" name="traySix">
+              
+              
+            </div>
+          
+        </section>
+        <!-- <section id="4500acc" class="acc">
+          <h3>Column: </h3><span></span>
+          <h3>Source Clean: </h3><span></span>
+          <h3>Solvents: </h3><span></span>
+        </section> -->
+        </section>
+        <section id="4000_01" class="inst">
+            <h2>4000_01</h2>
+            <section id="stateD">
+            <div class="allState" id="allStat4000_01">
+            
+            <section class="form1">
+                
+              <form action="/instrument" method="POST">
+                <label for="statD">Instrument Status:</label>
+                <select id="statD" name="statD">
+                  <!-- <option value="available">Available</option> -->
+                  <option value="inuse">In Use</option>
+                  <option value="reserved">Reserved</option>
+                  <option value="maint">Maintenance</option>
+                </select>
+                
+              <br><br>
+            
+                  <label for="dateD">Run Date: </label>
+                  <input type="datetime-local" id="dateD" name="dateD"></input>
+              <br><br>
+            
+                <label for="dateendD">Estimated End of Run: </label>
+                <input type="datetime-local" id="dateendD" name="dateendD"></input>
+            <br><br>
+            
+                  <!-- <label for="init">User Initials</label> -->
+                  
+                  <label for="initD" id="initD" name="initD">User</label>
+                  <select  id="initD" name="initD">
+                    <option>Nathaniel</option>
+                    <option>Katherine</option>
+                    <option>Sichen</option>
+                    <option>Chandra</option>
+                    <option>Irene</option>
+                    <option>Olivier</option>
+                    <option>Lauren</option>
+                    </select>
+                  
+                  <br><br>
+                  <button class="button" id="submit" type="submit">Submit</button>
+              </form>
+              
+            </section>
+            <section class="currentInstStatus" id="4000_01InstStat">
+            
+            
+                
+            
+            <section id="infosD">
+                <ul class="infosD" id="listD">
+                    <% for(let i=0; i < info.length; i++) {%>
+                        <% if(info[i].dateendD != null && info[i].dateendD != ""){%>
+                        <li class="listItem">
+                            <span ><%= info[i].initD %>:</span><br>
+                            <span class="stat"><%= info[i].statD %></span><br>
+                            <span ><%= info[i].dateD %>-<%= info[i].dateendD %></span>
+                            
+                        </li>
+                    <% } %>
+                    <% } %>
+              <!-- <span id="instStatC"></span>
+              <span id="runDateC"></span>
+              <span id="endDateC"></span>
+              <span id="initEC"></span> -->
+              </ul>
+            
+            
+            
+        </section>
+        </section>
+          </div>
+            
+            <div class="asTray" id="4500asTray">
+              <label for="trayOne">Tray 1</label>
+              <input type="text" id="trayOne" name="trayOne">
+              
+              
+            
+            
+              <label for="trayTwo">Tray 2</label>
+              <input type="text" id="trayTwo" name="trayTwo">
+              
+              <label for="trayThree">Tray 3</label>
+              <input type="text" id="trayThree" name="trayThree">
+              
+              <label for="trayFour">Tray 4</label>
+              <input type="text" id="trayFour" name="trayFour">
+              
+              <label for="trayFive">Tray 5</label>
+              <input type="text" id="trayFive" name="trayFive">
+              
+              <label for="traySix">Tray 6</label>
+              <input type="text" id="traySix" name="traySix">
+              
+              
+            </div>
+          
+        </section>
+        </section>
+    </main>
+
+
+    <script src="js/main.js"></script>
+</body>
+</html>
