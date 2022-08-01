@@ -257,6 +257,32 @@ h3 {
     
 
 }
+.solvents{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    margin-top: 20px;
+    
+    
+    
+}
+.solvents section{
+    display: flex;
+    flex-direction: column;
+    background-color: lightgreen;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5%;
+    justify-content: space-evenly;
+}
+.solvents section form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+    margin: 10px;
+}
 
 #instStat, #runDate, #endDate, #initE, #instStatB, #runDateB, #endDateB, #initEB, #instStatC, #runDateC, #endDateC, #initEC, #instStatD, #runDateD, #endDateD, #initED {
     font-size: 1.2rem;
@@ -299,15 +325,17 @@ h3 {
     }
 }
 
-@media screen and (max-width: 420px){
+@media screen and (max-width: 500px){
     .form1 {
         width: 100% !important;
     }
     #state, #stateB, #stateC, #stateD {
-        flex-direction: column !important;
+        flex-direction: row !important;
         display: flex;
         flex-wrap: wrap !important;
         width: 100% !important;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
     .currentInstStatus {
         width: 100%;
@@ -316,9 +344,14 @@ h3 {
         flex-direction: column !important;
         display: flex;
         flex-wrap: nowrap;
+        height: fit-content;
     }
     h2 {
         font-size: 4vw;
+    }
+    .allState{
+        width: 49%;
+        
     }
     
 }
