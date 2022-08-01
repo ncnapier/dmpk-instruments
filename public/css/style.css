@@ -56,6 +56,9 @@ a {
     text-decoration: none;
     margin: auto, 10px;
 }
+a:hover{
+    color: salmon
+}
 nav {
     border: black 1px solid;
     width: 60%;
@@ -113,6 +116,17 @@ main, .inst  {
     
     
 }
+#avail, #availB, #availC, #availD{
+    align-self: center;
+    text-align: center;
+    width: 70%;
+    color:#fffaf0;
+    justify-self: center;
+}
+
+.hide {
+    display: none
+}
 .form1 {
     
     width: 100%;
@@ -125,6 +139,7 @@ main, .inst  {
     margin: 10px;
     border-radius: 5%;
     padding: 10px;
+    background-color: #FFFF8F;
     
 }
 .Nathaniel {
@@ -169,11 +184,37 @@ main, .inst  {
 }
 #infos, #infosB, #infosC, #infosD{
     width: 100%;
+    height: 500px;
     
     
     
 }
-
+.stacks{
+    display: flex;
+    
+    flex-direction: row;
+}
+.stack1{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 45%;
+}
+.stack2{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 45%;
+}
+#trayOne, #trayTwo, #trayThree, #trayFour, #trayFive, #traySix {
+    width:100%;
+}
+#solventA, #solventB{
+    width: 70%;
+}
+#date, #dateend, #stat, #init,#dateB, #dateendB, #statB, #initB,#dateC, #dateendC, #statC, #initC,#dateD, #dateendD, #statD, #initD{
+    width: 40%;
+}
 .info {
     height: fit-content;
     
@@ -204,6 +245,7 @@ main, .inst  {
     overflow: auto;
     height: 25%;
     margin-top: 20px;
+    width: 40%;
     
     
     
@@ -240,6 +282,8 @@ main, .inst  {
     background-color: skyblue;
     height: fit-content;
     justify-content: space-evenly;
+    width: 100%;
+    align-self: flex-start;
 }
 h2 {
     width: 75%;
@@ -254,6 +298,7 @@ h3 {
     display: flex;
     flex-direction: column;
     width: 40%;
+    align-items: center;
     
 
 }
@@ -282,11 +327,19 @@ h3 {
     justify-content: space-evenly;
     height: 100%;
     margin: 10px;
+    
 }
 
 #instStat, #runDate, #endDate, #initE, #instStatB, #runDateB, #endDateB, #initEB, #instStatC, #runDateC, #endDateC, #initEC, #instStatD, #runDateD, #endDateD, #initED {
     font-size: 1.2rem;
     font-weight: 800;
+}
+.access{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-self: flex-start;
+    width: 100%;
 }
 
 @media screen and (max-width: 1040px) {
@@ -306,7 +359,7 @@ h3 {
     #state, #stateB, #stateC, #stateD {
         width: 100%;
         margin: auto;
-        height: 75%;
+        
     }
     
     h1 {
@@ -325,7 +378,8 @@ h3 {
     }
 }
 
-@media screen and (max-width: 500px){
+
+@media screen and (max-width: 700px){
     .form1 {
         width: 100% !important;
     }
@@ -350,8 +404,17 @@ h3 {
         font-size: 4vw;
     }
     .allState{
-        width: 49%;
+        width: 80%;
         
+    }
+    .solvents{
+        width: 100%;
+    }
+    .access {
+        align-self: center;
+    }
+    .asTray{
+        width:100%;
     }
     
 }

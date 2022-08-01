@@ -52,6 +52,9 @@ a {
     text-decoration: none;
     margin: auto, 10px;
 }
+a:hover{
+    color: salmon
+}
 nav {
     border: black 1px solid;
     width: 60%;

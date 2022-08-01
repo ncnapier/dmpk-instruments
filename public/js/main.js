@@ -196,6 +196,10 @@ fetch(`/instrument/api/inst`)
  .then(results =>{
    
    console.log(results)
+   if(document.querySelector(".infos").lastElementChild === null){
+    document.getElementById('infos').classList.add('available')
+    document.getElementById('avail').classList.remove('hide')
+   }else{
    let lastOne = document.querySelector(".infos").lastElementChild
    let thisStatus = lastOne.querySelector(".stat").innerText
    //let statusCurrent = document.querySelector('.stat').innerHTML
@@ -204,35 +208,50 @@ fetch(`/instrument/api/inst`)
    for(i = 0; i < results.length; i++){
    document.getElementById('infos').classList.add(thisStatus)
    }
-
+   }
 //    if(document.querySelector(".infos").lastElementChild)
    
 //    let statusCurrentB = document.querySelector('.stat').innerHTML
 //    console.log(statusCurrentB)
    //document.getElementById('infosB').classList.add(statusCurrentB)
+   if(document.querySelector(".infosB").lastElementChild === null){
+    document.getElementById('infosB').classList.add('available')
+    document.getElementById('availB').classList.remove('hide')
+   }else{
    let lastOneB = document.querySelector(".infosB").lastElementChild
    let thisStatusB = lastOneB.querySelector(".stat").innerText
    for(i = 0; i < results.length; i++){
    document.getElementById('infosB').classList.add(thisStatusB)
    }
+}
 
 //    let statusCurrentC = document.querySelector('.stat').innerHTML
 //    console.log(statusCurrentC)
    //document.getElementById('infosC').classList.add(statusCurrentC)
+   if(document.querySelector(".infosC").lastElementChild === null){
+    document.getElementById('infosC').classList.add('available')
+    document.getElementById('availC').classList.remove('hide')
+   }else{
    let lastOneC = document.querySelector(".infosC").lastElementChild
    let thisStatusC = lastOneC.querySelector(".stat").innerText
    for(i = 0; i < results.length; i++){
    document.getElementById('infosC').classList.add(thisStatusC)
    }
+}
 
 //    let statusCurrentD = document.querySelector('.stat').innerHTML
 //    console.log(statusCurrentD)
    //document.getElementById('infosC').classList.add(statusCurrentC)
+   if(document.querySelector(".infosD").lastElementChild === null){
+    document.getElementById('infosD').classList.add('available')
+    document.getElementById('availD').classList.remove('hide')
+   }else{
    let lastOneD = document.querySelector(".infosD").lastElementChild
    let thisStatusD = lastOneD.querySelector(".stat").innerText
    for(i = 0; i < results.length; i++){
    document.getElementById('infosD').classList.add(thisStatusD)
    }
+}
 //    function addInitToClass(){
        
 //    for(i = 0; i < results.length; i++){
