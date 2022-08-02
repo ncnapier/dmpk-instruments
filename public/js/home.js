@@ -72,7 +72,8 @@ fetch("https://dataservice.accuweather.com/currentconditions/v1/335668?apikey=Wl
     document.getElementById('icon').style.backgroundColor = "#dcdcdc"
   }else if(icon <= 18){
     document.getElementById('icon').style.backgroundColor = "#bcd4e6"
-      document.getElementById('icon').style.borderRadius = "0px 50% 50% 50%"
+    document.getElementById('icon').style.borderRadius = "0px 50% 50% 50%"
+    
   }else if(icon <= 29){
     document.getElementById('icon').style.backgroundColor = "white"
     document.getElementById('icon').style.border = "1px black solid"
@@ -85,7 +86,7 @@ fetch("https://dataservice.accuweather.com/currentconditions/v1/335668?apikey=Wl
   }else if(icon <= 42){
     document.getElementById('icon').style.backgroundColor = "#bcd4e6"
     document.getElementById('icon').style.border = "4px black solid"
-      document.getElementById('icon').style.borderRadius = "0px 50% 50% 50%"
+    document.getElementById('icon').style.borderRadius = "0px 50% 50% 50%"
   }else if(icon <= 44){
     document.getElementById('icon').style.backgroundColor = "white"
     document.getElementById('icon').style.border = "4px black solid"
@@ -127,3 +128,31 @@ fetch("https://dataservice.accuweather.com/currentconditions/v1/335668?apikey=Wl
 // .then(results => {
 //     console.log(results)
 // })
+
+
+//delete chat:
+
+const deleteText = document.querySelectorAll('.fa-trash')
+
+ Array.from(deleteText).forEach((element)=>{
+  element.addEventListener('click', deleteRapper)
+ })
+
+function deleteRapper(){
+  const time = this.parentNode.childNodes[6].firstChild.data
+  fetch('/deleteRapper',{
+    method: 'delete',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      time: time
+    })
+  })
+  .then(res => {
+    if (res.ok) return res.json()
+  })
+  .then(data => {
+
+    window.location.reload()
+    console.log(time)
+  })
+}

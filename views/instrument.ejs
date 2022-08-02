@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a1460715b1.js" crossorigin="anonymous"></script>
     <title>DMPK Instruments</title>
 </head>
 <body>
@@ -68,7 +69,7 @@
                     </select>
                   
                   <br><br>
-                  <button class="button" id="submit" type="submit">Submit</button>
+                  <button  id="submit" type="submit">Submit</button>
               </form>
               
             </section>
@@ -160,10 +161,11 @@
                        
                         <% if(info[i].dateend != null){%>
                         <li class="listItem">
+                          <span class="_id"><%= info[i].dateend %></span>
                             <span ><%= info[i].init %>:</span><br>
                             <span class="stat" ><%= info[i].stat %></span><br>
                             <span ><%= info[i].date %>-<%= info[i].dateend %></span>
-                            
+                            <span class='fa fa-trash'></span>
                         </li>
                     <% } %>
                     <% } %>
@@ -309,9 +311,11 @@
                     <% for(let i=0; i < info.length; i++) {%>
                         <% if(info[i].dateendB != null && info[i].dateendB != ""){%>
                         <li class="listItem">
+                          <span class="_id"><%= info[i].dateendB %></span>
                             <span ><%= info[i].initB %>:</span><br>
                             <span class="stat"><%= info[i].statB %></span><br>
                             <span ><%= info[i].dateB %>-<%= info[i].dateendB %></span>
+                            <span class='fa fa-trashB fa-trash'></span>
                             
                         </li>
                     <% } %>
@@ -460,9 +464,11 @@
                     <% for(let i=0; i < info.length; i++) {%>
                         <% if(info[i].dateendC != null && info[i].dateendC != ""){%>
                         <li class="listItem">
+                          <span class="_id"><%= info[i].dateendC %></span>
                             <span ><%= info[i].initC %>:</span><br>
                             <span class="stat"><%= info[i].statC %></span><br>
                             <span ><%= info[i].dateC %>-<%= info[i].dateendC %></span>
+                            <span class='fa fa-trashC fa-trash'></span>
                             
                         </li>
                     <% } %>
@@ -611,9 +617,11 @@
                     <% for(let i=0; i < info.length; i++) {%>
                         <% if(info[i].dateendD != null && info[i].dateendD != ""){%>
                         <li class="listItem">
+                          <span class="_id"><%= info[i].dateendD %></span>
                             <span ><%= info[i].initD %>:</span><br>
                             <span class="stat"><%= info[i].statD %></span><br>
                             <span ><%= info[i].dateD %>-<%= info[i].dateendD %></span>
+                            <span class='fa fa-trashD fa-trash'></span>
                             
                         </li>
                     <% } %>

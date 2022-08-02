@@ -368,3 +368,102 @@ fetch(`/instrument/api/inst`)
 //   console.log(results)
   //document.getElementById('chatsE').innerText =  arr
 
+  const deleteText = document.querySelectorAll('.fa-trash')
+
+  Array.from(deleteText).forEach((element)=>{
+   element.addEventListener('click', deleteRapper)
+  })
+ 
+ function deleteRapper(){
+   const dateend = this.parentNode.childNodes[1].innerText
+   fetch('/deleteRes',{
+     method: 'delete',
+     headers: { 'Content-Type': 'application/json' },
+     body: JSON.stringify({
+       dateend: dateend
+     })
+   })
+   .then(res => {
+     if (res.ok) return res.json()
+   })
+   .then(data => {
+ 
+     window.location.reload()
+     console.log(dateend)
+   })
+ }
+
+ const deleteTextB = document.querySelectorAll('.fa-trashB')
+
+ Array.from(deleteTextB).forEach((element)=>{
+  element.addEventListener('click', deleteRapperB)
+ })
+
+function deleteRapperB(){
+  const dateendB = this.parentNode.childNodes[1].innerText
+  fetch('/deleteResB',{
+    method: 'delete',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      dateendB: dateendB
+    })
+  })
+  .then(res => {
+    if (res.ok) return res.json()
+  })
+  .then(data => {
+
+    window.location.reload()
+    console.log(dateendB)
+  })
+}
+
+const deleteTextC = document.querySelectorAll('.fa-trashC')
+
+ Array.from(deleteTextC).forEach((element)=>{
+  element.addEventListener('click', deleteRapperC)
+ })
+
+function deleteRapperC(){
+  const dateendC = this.parentNode.childNodes[1].innerText
+  fetch('/deleteResC',{
+    method: 'delete',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      dateendC: dateendC
+    })
+  })
+  .then(res => {
+    if (res.ok) return res.json()
+  })
+  .then(data => {
+
+    window.location.reload()
+    console.log(dateendC)
+  })
+}
+
+const deleteTextD = document.querySelectorAll('.fa-trashD')
+
+ Array.from(deleteTextD).forEach((element)=>{
+  element.addEventListener('click', deleteRapperD)
+ })
+
+function deleteRapperD(){
+  const dateendD = this.parentNode.childNodes[1].innerText
+  fetch('/deleteResD',{
+    method: 'delete',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      dateendD: dateendD
+    })
+  })
+  .then(res => {
+    if (res.ok) return res.json()
+  })
+  .then(data => {
+
+    window.location.reload()
+    console.log(dateendD)
+  })
+}
