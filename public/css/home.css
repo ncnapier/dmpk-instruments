@@ -67,6 +67,10 @@ nav {
 #weather {
     display: flex;
     justify-content: flex-end;
+    width: 50%;
+    align-items: center;
+    
+    
 }
 #weather h4 {
     font-size: 2vw;
@@ -77,6 +81,24 @@ nav {
     border-radius: 50%;
     margin: 10px;
     align-self: center;
+    
+}
+#extras{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+}
+#cal{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    width: 50%;
+}
+#cal iframe{
+    width: 500px;
+    height: 400px;
 }
 main {
     display: flex;
@@ -86,11 +108,11 @@ main {
 #newscom {
     border: 1px solid black;
     width: 40%;
-    height: 400px;
+    height: 476px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 #newscom h3 {
@@ -128,7 +150,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 0px;
 }
 #chat h3 {
     justify-self: center;
@@ -264,10 +286,11 @@ form {
     #newscom h3, #meeting h3{
         white-space: nowrap;
     }
+    
 
 }
 
-@media screen and (max-width: 420px){
+@media screen and (max-width: 900px){
     .form1 {
         width: 100% !important;
     }
@@ -275,5 +298,25 @@ form {
         flex-direction: column !important;
         display: flex;
         flex-wrap: wrap !important;
+    }
+    #extras{
+        flex-direction: column-reverse;
+        
+    }
+    #weather, #cal{
+        width:100%;
+        align-items: center;
+    }
+    #cal iframe{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 500px){
+    #cal iframe{
+        width:100%;
+    }
+    #cal{
+        width: 90% !important;
+        
     }
 }

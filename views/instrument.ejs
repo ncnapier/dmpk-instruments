@@ -164,7 +164,7 @@
                           <span class="_id"><%= info[i].dateend %></span>
                             <span ><%= info[i].init %>:</span><br>
                             <span class="stat" ><%= info[i].stat %></span><br>
-                            <span ><%= info[i].date %>-<%= info[i].dateend %></span>
+                            <span class="resDate"><%= info[i].date.substr(0,10) %>(<%= info[i].date.substr(11,14) %>) - <%= info[i].dateend.substr(0,10) %>(<%= info[i].dateend.substr(11,14)  %>)</span>
                             <span class='fa fa-trash'></span>
                         </li>
                     <% } %>
@@ -314,7 +314,7 @@
                           <span class="_id"><%= info[i].dateendB %></span>
                             <span ><%= info[i].initB %>:</span><br>
                             <span class="stat"><%= info[i].statB %></span><br>
-                            <span ><%= info[i].dateB %>-<%= info[i].dateendB %></span>
+                            <span class="resDate"><%= info[i].dateB.substr(0,10) %>(<%= info[i].dateB.substr(11,14) %>) - <%= info[i].dateendB.substr(0,10) %>(<%= info[i].dateendB.substr(11,14)  %>)</span>
                             <span class='fa fa-trashB fa-trash'></span>
                             
                         </li>
@@ -467,7 +467,7 @@
                           <span class="_id"><%= info[i].dateendC %></span>
                             <span ><%= info[i].initC %>:</span><br>
                             <span class="stat"><%= info[i].statC %></span><br>
-                            <span ><%= info[i].dateC %>-<%= info[i].dateendC %></span>
+                            <span class="resDate"><%= info[i].dateC.substr(0,10) %>(<%= info[i].dateC.substr(11,14) %>) - <%= info[i].dateendC.substr(0,10) %>(<%= info[i].dateendC.substr(11,14)  %>)</span>
                             <span class='fa fa-trashC fa-trash'></span>
                             
                         </li>
@@ -620,7 +620,7 @@
                           <span class="_id"><%= info[i].dateendD %></span>
                             <span ><%= info[i].initD %>:</span><br>
                             <span class="stat"><%= info[i].statD %></span><br>
-                            <span ><%= info[i].dateD %>-<%= info[i].dateendD %></span>
+                            <span class="resDate"><%= info[i].dateD.substr(0,10) %>(<%= info[i].dateD.substr(11,14) %>) - <%= info[i].dateendD.substr(0,10) %>(<%= info[i].dateendD.substr(11,14)  %>)</span>
                             <span class='fa fa-trashD fa-trash'></span>
                             
                         </li>
