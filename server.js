@@ -4,6 +4,7 @@ const req = require('express/lib/request')
 const app = express()
 const  MongoClient  = require('mongodb').MongoClient
 const PORT = 8000
+
 require('dotenv').config()
 
 let db,
@@ -21,9 +22,11 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+
 app.listen(process.env.PORT || PORT, ()=>{
     console.log(`server running on port ${PORT}`)
 })
+
 
 app.get('/', (req, res)=>{
     db.collection('quotes').find().toArray()
@@ -40,9 +43,39 @@ app.get('/instrument.ejs', (req, res)=>{
     })
     .catch(error => console.error(error))
 })
-
+//tecan
+app.get('/tecan.ejs', (req, res)=>{
+    
+    db.collection('tecan').find().toArray()
+    .then(data =>{
+        
+        res.render('tecan.ejs', { info: data })
+    })
+    .catch(error => console.error(error))
+})
+//tecan submit
+app.post('/tecan', (req, res)=>{
+    db.collection('tecan').insertOne(req.body)
+    .then(results =>{
+        res.redirect('/tecan.ejs')
+    })
+})
+//tays submit
+app.post('/trays', (req, res)=>{
+    db.collection('trays').insertOne(req.body)
+    .then(results =>{
+        res.redirect('/instrument.ejs')
+    })
+})
 app.get('/instrument/api/inst', (req, res)=>{
     db.collection('instruments').find().toArray()
+        .then(results=>{
+            console.log(results)
+            res.json(results)
+        })
+})
+app.get('/instrument/api/tray', (req, res)=>{
+    db.collection('trays').find().toArray()
         .then(results=>{
             console.log(results)
             res.json(results)
@@ -60,6 +93,7 @@ app.post('/instrument', (req, res)=>{
     db.collection('instruments').insertOne(req.body)
     .then(results =>{
         res.redirect('/instrument.ejs')
+        
     })
 })
 //submit button on 5500
@@ -82,5 +116,65 @@ app.post('/instrumentD', (req, res)=>{
     .then(results =>{
         res.redirect('/instrument.ejs')
     })
+})
+
+app.delete('/deleteRapper', (req, res) => {
+    db.collection('quotes').deleteOne({time: req.body.time})
+    .then(result => {
+        console.log('Rapper Deleted')
+        res.json('Rapper Deleted')
+    })
+    .catch(error => console.error(error))
+
+})
+
+app.delete('/deleteRes', (req, res) => {
+    db.collection('instruments').deleteOne({dateend: req.body.dateend})
+    .then(result => {
+        console.log('Rapper Deleted')
+        res.json('Rapper Deleted')
+    })
+    .catch(error => console.error(error))
+
+})
+
+app.delete('/deleteResTecan', (req, res) => {
+    db.collection('tecan').deleteOne({dateendT: req.body.dateendT})
+    .then(result => {
+        console.log('Tecan Deleted')
+        res.json('Rapper Deleted')
+    })
+    .catch(error => console.error(error))
+
+})
+
+app.delete('/deleteResB', (req, res) => {
+    db.collection('instruments').deleteOne({dateendB: req.body.dateendB})
+    .then(result => {
+        console.log('Rapper Deleted')
+        res.json('Rapper Deleted')
+    })
+    .catch(error => console.error(error))
+
+})
+
+app.delete('/deleteResC', (req, res) => {
+    db.collection('instruments').deleteOne({dateendC: req.body.dateendC})
+    .then(result => {
+        console.log('Rapper Deleted')
+        res.json('Rapper Deleted')
+    })
+    .catch(error => console.error(error))
+
+})
+
+app.delete('/deleteResD', (req, res) => {
+    db.collection('instruments').deleteOne({dateendD: req.body.dateendD})
+    .then(result => {
+        console.log('Rapper Deleted')
+        res.json('Rapper Deleted')
+    })
+    .catch(error => console.error(error))
+
 })
 

@@ -12,6 +12,19 @@
     <title>DMPK Instruments</title>
 </head>
 <body>
+  <section id="blocker" class="blocker">
+    <div>
+       
+        <form>
+            <label for="user">User:</label><br>
+            <input type="text" id="user" name="user" ><br>
+            <label for="pword">Password:</label><br>
+            <input type="password" id="pword" name="pword" ><br>
+            <button id="submitpass" type="submit">Submit</button>
+        </form>
+        
+    </div>
+</section>
     <header>
       
         <section id="dmpk">
@@ -21,7 +34,7 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/instrument.ejs">Instruments</a></li>
-                <li><a href="#">Projects</a></li>
+                <li><a href="/tecan.ejs">Tecan</a></li>
             </ul>
         </nav>
     
@@ -37,15 +50,9 @@
             <section class="form1">
                 
               <form action="/instrument" method="POST">
-                <label for="stat">Instrument Status:</label>
-                <select id="stat" name="stat">
-                  <!-- <option value="available">Available</option> -->
-                  <option value="inuse">In Use</option>
-                  <option value="reserved">Reserved</option>
-                  <option value="maint">Maintenance</option>
-                </select>
                 
-              <br><br>
+                
+             
             
                   <label for="date">Run Date: </label>
                   <input type="datetime-local" id="date" name="date"></input>
@@ -66,6 +73,7 @@
                     <option>Irene</option>
                     <option>Olivier</option>
                     <option>Lauren</option>
+                    <option>Snehal</option>
                     </select>
                   
                   <br><br>
@@ -75,6 +83,7 @@
             </section>
             <!--this is where access needs to start-->
             <section class="access">
+              
               <div class="asTray" id="4500asTray">
                 <div class="stacks">
                   <div class="stack1">
@@ -114,6 +123,7 @@
                   
                   <label for="traySix">Tray 12</label>
                   <input type="text" id="traySix" name="traySix">
+                  
                   </div>
               </div>
                 
@@ -156,14 +166,15 @@
               <h2 class="hide" id="avail">AVAILABLE</h2>
                 <ul class="infos" id="list">
                     <% for(let i=0; i < info.length; i++) {%>
-                        <%let currentDate = new Date()%>
+                      <%let currentDate = new Date().toISOString()%>
                         
                        
-                        <% if(info[i].dateend != null){%>
+                      <% if(info[i].dateend != null && info[i].dateend != "" && info[i].dateend >= currentDate){%>
                         <li class="listItem">
                           <span class="_id"><%= info[i].dateend %></span>
                             <span ><%= info[i].init %>:</span><br>
-                            <span class="stat" ><%= info[i].stat %></span><br>
+                            <% let status; if(info[i].date <= currentDate && info[i].dateend >= currentDate){  status = 'inuse'}else{ status = 'reserved';  } %>
+                            <span class="statT" ><%= status %></span><br>
                             <span class="resDate"><%= info[i].date.substr(0,10) %>(<%= info[i].date.substr(11,14) %>) - <%= info[i].dateend.substr(0,10) %>(<%= info[i].dateend.substr(11,14)  %>)</span>
                             <span class='fa fa-trash'></span>
                         </li>
@@ -191,15 +202,7 @@
             <section class="form1">
                 
               <form action="/instrument" method="POST">
-                <label for="statB">Instrument Status:</label>
-                <select id="statB" name="statB">
-                  <!-- <option value="available">Available</option> -->
-                  <option value="inuse">In Use</option>
-                  <option value="reserved">Reserved</option>
-                  <option value="maint">Maintenance</option>
-                </select>
-                
-              <br><br>
+               
             
                   <label for="dateB">Run Date: </label>
                   <input type="datetime-local" id="dateB" name="dateB"></input>
@@ -220,6 +223,7 @@
                     <option>Irene</option>
                     <option>Olivier</option>
                     <option>Lauren</option>
+                    <option>Snehal</option>
                     </select>
                   
                   <br><br>
@@ -308,12 +312,15 @@
             <section id="infosB">
               <h2 class="hide" id="availB">AVAILABLE</h2>
                 <ul class="infosB" id="listB">
+                  <%let currentDate = new Date().toISOString()%>
                     <% for(let i=0; i < info.length; i++) {%>
-                        <% if(info[i].dateendB != null && info[i].dateendB != ""){%>
+                        <% if(info[i].dateendB != null && info[i].dateendB != "" && info[i].dateendB >= currentDate){%>
                         <li class="listItem">
                           <span class="_id"><%= info[i].dateendB %></span>
                             <span ><%= info[i].initB %>:</span><br>
-                            <span class="stat"><%= info[i].statB %></span><br>
+                            <%let currentDate = new Date().toISOString()%>
+                            <% let statusOf5500; if(info[i].dateB <= currentDate && info[i].dateendB >= currentDate){  statusOf5500 = 'inuse'}else{ statusOf5500 = 'reserved';  } %>
+                            <span class="statB" ><%= statusOf5500 %></span><br>
                             <span class="resDate"><%= info[i].dateB.substr(0,10) %>(<%= info[i].dateB.substr(11,14) %>) - <%= info[i].dateendB.substr(0,10) %>(<%= info[i].dateendB.substr(11,14)  %>)</span>
                             <span class='fa fa-trashB fa-trash'></span>
                             
@@ -344,15 +351,7 @@
             <section class="form1">
                 
               <form action="/instrument" method="POST">
-                <label for="statC">Instrument Status:</label>
-                <select id="statC" name="statC">
-                  <!-- <option value="available">Available</option> -->
-                  <option value="inuse">In Use</option>
-                  <option value="reserved">Reserved</option>
-                  <option value="maint">Maintenance</option>
-                </select>
-                
-              <br><br>
+               
             
                   <label for="dateC">Run Date: </label>
                   <input type="datetime-local" id="dateC" name="dateC"></input>
@@ -373,6 +372,7 @@
                     <option>Irene</option>
                     <option>Olivier</option>
                     <option>Lauren</option>
+                    <option>Snehal</option>
                     </select>
                   
                   <br><br>
@@ -462,11 +462,14 @@
               <h2 class="hide" id="availC">AVAILABLE</h2>
                 <ul class="infosC" id="listC">
                     <% for(let i=0; i < info.length; i++) {%>
-                        <% if(info[i].dateendC != null && info[i].dateendC != ""){%>
+                      <%let currentDate = new Date().toISOString()%>
+                        <% if(info[i].dateendC != null && info[i].dateendC != "" && info[i].dateendC >= currentDate){%>
                         <li class="listItem">
                           <span class="_id"><%= info[i].dateendC %></span>
                             <span ><%= info[i].initC %>:</span><br>
-                            <span class="stat"><%= info[i].statC %></span><br>
+                            
+                            <% let statusOf400002; if(info[i].dateC <= currentDate && info[i].dateendC >= currentDate){  statusOf400002 = 'inuse'}else{ statusOf400002 = 'reserved';  } %>
+                            <span class="statC" ><%= statusOf400002 %></span><br>
                             <span class="resDate"><%= info[i].dateC.substr(0,10) %>(<%= info[i].dateC.substr(11,14) %>) - <%= info[i].dateendC.substr(0,10) %>(<%= info[i].dateendC.substr(11,14)  %>)</span>
                             <span class='fa fa-trashC fa-trash'></span>
                             
@@ -497,15 +500,7 @@
             <section class="form1">
                 
               <form action="/instrument" method="POST">
-                <label for="statD">Instrument Status:</label>
-                <select id="statD" name="statD">
-                  <!-- <option value="available">Available</option> -->
-                  <option value="inuse">In Use</option>
-                  <option value="reserved">Reserved</option>
-                  <option value="maint">Maintenance</option>
-                </select>
-                
-              <br><br>
+
             
                   <label for="dateD">Run Date: </label>
                   <input type="datetime-local" id="dateD" name="dateD"></input>
@@ -526,6 +521,7 @@
                     <option>Irene</option>
                     <option>Olivier</option>
                     <option>Lauren</option>
+                    <option>Snehal</option>
                     </select>
                   
                   <br><br>
@@ -615,11 +611,14 @@
               <h2 class="hide" id="availD">AVAILABLE</h2>
                 <ul class="infosD" id="listD">
                     <% for(let i=0; i < info.length; i++) {%>
-                        <% if(info[i].dateendD != null && info[i].dateendD != ""){%>
+                      <%let currentDate = new Date().toISOString()%>
+                        <% if(info[i].dateendD != null && info[i].dateendD != "" && info[i].dateendD >= currentDate){%>
                         <li class="listItem">
                           <span class="_id"><%= info[i].dateendD %></span>
                             <span ><%= info[i].initD %>:</span><br>
-                            <span class="stat"><%= info[i].statD %></span><br>
+                            
+                            <% let statusOf400001; if(info[i].dateD <= currentDate && info[i].dateendD >= currentDate){  statusOf400001 = 'inuse'}else{ statusOf400001 = 'reserved';  } %>
+                            <span class="statD" ><%= statusOf400001 %></span><br>
                             <span class="resDate"><%= info[i].dateD.substr(0,10) %>(<%= info[i].dateD.substr(11,14) %>) - <%= info[i].dateendD.substr(0,10) %>(<%= info[i].dateendD.substr(11,14)  %>)</span>
                             <span class='fa fa-trashD fa-trash'></span>
                             

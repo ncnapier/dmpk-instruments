@@ -1,12 +1,27 @@
-//for 4500 functioning:
+//user and password to local storage:
+function setUser(){
+  let user = document.getElementById('user').value 
+  let pword = document.getElementById('pword').value
+  localStorage.setItem('user', user)
+  localStorage.setItem('pword', pword)
+  console.log(user)
+  console.log(pword)
+ }
+ document.getElementById('submitpass').addEventListener("click", setUser)
+ 
+ //get from local storage
+ function removeBlocker(){
+   let user = localStorage.getItem("user");
+   console.log(user);
+   if(localStorage.getItem('pword') == 'DMPKLAB!'){
+     document.getElementById('blocker').classList.add('hide')
+   }
+ }
+ removeBlocker()
 
+//for instrument functioning:
 
-
-//document.getElementById('submit').addEventListener('click', formFill)
 document.getElementById('submit').addEventListener('click', statusLight)
-
-
-
 
 function statusLight() {
     if (document.getElementById('instStat').innerText === 'available'){
@@ -20,6 +35,7 @@ function statusLight() {
         
     }
 }
+
 
 
 //dmpk letter colors
@@ -49,7 +65,7 @@ function letterColor4() {
     document.getElementById('P').style.color = "#FFFF8F"
     
 }
-//set interval for dmpk letter colors
+
 function flashes() {
     x = 2;
 letterColor()
@@ -65,70 +81,83 @@ flashes();
 
 
 //instrument status api
-
+//fetch(`https://dmpk-instrument-api.herokuapp.com/api.js`)
 fetch(`/instrument/api/inst`)
  .then(res => res.json()) // parse response as JSON
  .then(results =>{
-    //functionality for 4500
-    
-    //hides status li if it does not have a data or it belongs to another instrument
+   
    console.log(results)
+//4500
+
    if(document.querySelector(".infos").lastElementChild === null){
     document.getElementById('infos').classList.add('available')
     document.getElementById('avail').classList.remove('hide')
    }else{
    let lastOne = document.querySelector(".infos").lastElementChild
-   let thisStatus = lastOne.querySelector(".stat").innerText
-
-   for(i = 0; i < results.length; i++){
+   let thisStatus = lastOne.querySelector(".statT").innerText
+ 
+   
    document.getElementById('infos').classList.add(thisStatus)
+   
    }
-   }
-   //functionality for 5500
-    
-    //hides status li if it does not have a data or it belongs to another instrument
-
+//5500
    if(document.querySelector(".infosB").lastElementChild === null){
     document.getElementById('infosB').classList.add('available')
     document.getElementById('availB').classList.remove('hide')
    }else{
    let lastOneB = document.querySelector(".infosB").lastElementChild
-   let thisStatusB = lastOneB.querySelector(".stat").innerText
-   for(i = 0; i < results.length; i++){
+   let thisStatusB = lastOneB.querySelector(".statB").innerText
+   
    document.getElementById('infosB').classList.add(thisStatusB)
-   }
+   
 }
-//functionality for 4000-1
-    
-    //hides status li if it does not have a data or it belongs to another instrument
-
+//4000_02
    if(document.querySelector(".infosC").lastElementChild === null){
     document.getElementById('infosC').classList.add('available')
     document.getElementById('availC').classList.remove('hide')
    }else{
    let lastOneC = document.querySelector(".infosC").lastElementChild
-   let thisStatusC = lastOneC.querySelector(".stat").innerText
-   for(i = 0; i < results.length; i++){
-   document.getElementById('infosC').classList.add(thisStatusC)
-   }
-}
-    //functionality for 4000-2
-    
-    //hides status li if it does not have a data or it belongs to another instrument
+   let thisStatusC = lastOneC.querySelector(".statC").innerText
 
+   document.getElementById('infosC').classList.add(thisStatusC)
+   
+}
+//4000_01
    if(document.querySelector(".infosD").lastElementChild === null){
     document.getElementById('infosD').classList.add('available')
     document.getElementById('availD').classList.remove('hide')
    }else{
    let lastOneD = document.querySelector(".infosD").lastElementChild
-   let thisStatusD = lastOneD.querySelector(".stat").innerText
-   for(i = 0; i < results.length; i++){
+   let thisStatusD = lastOneD.querySelector(".statD").innerText
+   
    document.getElementById('infosD').classList.add(thisStatusD)
-   }
+   
 }
+//tecan
+//tecan
 
-//adds a trashcan icon to delete status reservations for 4500
+  
 
+
+// if(document.querySelector('.statT').innerHTML === 'reserved'){
+//   document.getElementById('infosT').classList.add('available')
+// }else{
+//   document.getElementById('infosT').classList.add('available')
+// }
+
+// if(document.querySelector(".infosT").lastElementChild === null){
+//   document.getElementById('infosT').classList.add('available')
+//   document.getElementById('availT').classList.remove('hide')
+//  }else{
+//  let lastOneT = document.querySelector(".infosT").lastElementChild
+//  let thisStatusT = lastOneT.querySelector(".stat").innerText
+//  for(i = 0; i < results.length; i++){
+//  document.getElementById('infosT').classList.add(thisStatusT)
+//  }
+// }
+ })
+
+//deleting reservations:
   const deleteText = document.querySelectorAll('.fa-trash')
 
   Array.from(deleteText).forEach((element)=>{
@@ -153,9 +182,7 @@ fetch(`/instrument/api/inst`)
      console.log(dateend)
    })
  }
-    
-//adds a trashcan icon to delete status reservations for 5500
-    
+
  const deleteTextB = document.querySelectorAll('.fa-trashB')
 
  Array.from(deleteTextB).forEach((element)=>{
@@ -180,7 +207,6 @@ function deleteRapperB(){
     console.log(dateendB)
   })
 }
-    //adds a trashcan icon to delete status reservations for 4000-1
 
 const deleteTextC = document.querySelectorAll('.fa-trashC')
 
@@ -206,7 +232,6 @@ function deleteRapperC(){
     console.log(dateendC)
   })
 }
-    //adds a trashcan icon to delete status reservations for 4000-2
 
 const deleteTextD = document.querySelectorAll('.fa-trashD')
 
@@ -232,3 +257,28 @@ function deleteRapperD(){
     console.log(dateendD)
   })
 }
+
+function deleteRapperT(){
+  const dateendT = this.parentNode.childNodes[1].innerText
+  fetch('/deleteResTecan',{
+    method: 'delete',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      dateendT: dateendT
+    })
+  })
+  .then(res => {
+    if (res.ok) return res.json()
+  })
+  .then(data => {
+
+    window.location.reload()
+    console.log(dateendT)
+  })
+}
+
+const deleteTextT = document.querySelectorAll('.fa-trashT')
+
+ Array.from(deleteTextT).forEach((element)=>{
+  element.addEventListener('click', deleteRapperT)
+ })

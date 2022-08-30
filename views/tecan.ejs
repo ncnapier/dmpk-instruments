@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a1460715b1.js" crossorigin="anonymous"></script>
+    <title>DMPK TECAN</title>
+</head>
+<body>
+  <section id="blocker" class="blocker">
+    <div>
+       
+        <form>
+            <label for="user">User:</label><br>
+            <input type="text" id="user" name="user" ><br>
+            <label for="pword">Password:</label><br>
+            <input type="password" id="pword" name="pword" ><br>
+            <button id="submitpass" type="submit">Submit</button>
+        </form>
+        
+    </div>
+</section>
+    <header>
+      
+        <section id="dmpk">
+          <h1><span id ="D">D</span><span id="M">M</span><span id="P">P</span><span id="K">K</span> Lab</h1>
+        </section>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/instrument.ejs">Instruments</a></li>
+                <li><a href="tecan.ejs">Tecan</a></li>
+            </ul>
+        </nav>
+    
+
+    </header>
+    <h2>TECAN STATUS:</h2>
+    <main>
+        <section id="4500" class="inst">
+            <h2>TECAN</h2>
+            <section id="state">
+            <div class="allState" id="allStat4500">
+            
+            <section class="form1">
+              
+              <form action="/tecan" method="POST">
+                
+                <!-- <label for="statT">Tecan Status:</label>
+                <select id="statT" name="statT"> -->
+                  <!-- <option value="available">Available</option> -->
+                  <!-- <option value="inuse">In Use</option>
+                  <option value="reserved">Reserved</option>
+                  <option value="maint">Maintenance</option>
+                </select> -->
+                
+              <br><br>
+            
+                  <label for="dateT">Run Date: </label>
+                  <input type="datetime-local" id="dateT" name="dateT"></input>
+              <br><br>
+            
+                <label for="dateendT">Estimated End of Run: </label>
+                <input type="datetime-local" id="dateendT" name="dateendT"></input>
+            <br><br>
+            
+                  <!-- <label for="init">User Initials</label> -->
+                  
+                  <label for="initT" id="initT" name="initT">User</label>
+                  <select  id="initT" name="initT">
+                    <option>Nathaniel</option>
+                    <option>Katherine</option>
+                    <option>Sichen</option>
+                    <option>Chandra</option>
+                    <option>Irene</option>
+                    <option>Olivier</option>
+                    <option>Lauren</option>
+                    <option>Snehal</option>
+                    </select>
+                  
+                  <br><br>
+                  <button  id="submit" type="submit">Submit</button>
+              </form>
+              
+            </section>
+            <!--this is where access needs to start-->
+            
+               </section>
+
+
+
+            
+        <!--this is where access ends-->
+          </div>
+          <!-- this is where current inst starts-->
+          <section class="currentInstStatus" id="4500InstStat" >
+            
+            
+                
+            
+            <section id="infosT" >
+              <h2 class="hide" id="availT">AVAILABLE</h2>
+                <ul class="infosT" id="listT">
+                    <% for(let i=0; i < info.length; i++) {%>
+                        <%let currentDate = new Date().toISOString()%>
+                        
+                       
+                        <% if(info[i].dateendT != null){%>
+                        <li class="listItem">
+                          <span class="_id"><%= info[i].dateendT %></span>
+                            <span ><%= info[i].initT %>:</span><br>
+                            <% let statusOfTecan; if(info[i].dateT <= currentDate && info[i].dateendT >= currentDate){  statusOfTecan = 'inuse'}else{ statusOfTecan = 'reserved';  } %>
+                            <span class="statT" ><%= statusOfTecan %></span><br>
+                            
+                            <span class="resDate"><%= info[i].dateT.substr(0,10) %>(<%= info[i].dateT.substr(11,14) %>) - <%= info[i].dateendT.substr(0,10) %>(<%= info[i].dateendT.substr(11,14)  %>)</span>
+                            <span class='fa fa-trash fa-trashT'></span>
+                            <p class="_id"><%= currentDate %></p><p class="_id"><%= info[i].dateT %></p>
+                        </li>
+                    <% } %>
+                    <% } %>
+              <!-- <span id="instStatC"></span>
+              <span id="runDateC"></span>
+              <span id="endDateC"></span>
+              <span id="initEC"></span> -->
+              </ul>
+            
+            
+            
+        </section>
+        </section>
+             <!--end of current-->
+        </section>
+
+        </section>
+        
+    </main>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/tecan.js"></script>
+</body>
+</html>

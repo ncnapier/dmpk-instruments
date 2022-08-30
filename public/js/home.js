@@ -1,10 +1,40 @@
 
+//document.getElementById('submit').addEventListener('click', formFillB)
+
 //date and time for chat
 //let currentDate = new Date();
 // let cDay = currentDate.getDate();
 // let cMonth = currentDate.getMonth() + 1;
 // let cYear = currentDate.getFullYeaar();
 // let dateToPrint = cDay + '/' + cMonth + '/' + cYear;
+
+// function formFillB() {
+//     yyy = document.getElementById('statD').value 
+    
+//     xxx = document.getElementById('chats').value 
+//     document.getElementById('chatsE').innerHTML = yyy + ":" + "<br>" + xxx + "<br>" + "(" + currentDate + ")"
+    
+// }
+//user and password to local storage:
+function setUser(){
+ let user = document.getElementById('user').value 
+ let pword = document.getElementById('pword').value
+ localStorage.setItem('user', user)
+ localStorage.setItem('pword', pword)
+ console.log(user)
+ console.log(pword)
+}
+document.getElementById('submitpass').addEventListener("click", setUser)
+
+//get from local storage
+function removeBlocker(){
+  let user = localStorage.getItem("user");
+  console.log(user);
+  if(localStorage.getItem('pword') == 'DMPKLAB!'){
+    document.getElementById('blocker').classList.add('hide')
+  }
+}
+removeBlocker()
 
 
 //add date and time to form
@@ -39,7 +69,7 @@ function letterColor4() {
     document.getElementById('P').style.color = "#FFFF8F"
     
 }
-//sets interval for dmpk letter colors
+
 function flashes() {
     x = 2;
 letterColor()
@@ -51,7 +81,7 @@ setTimeout(flashes, x*1000);
 flashes();
 //setInterval(flashes(), 2000)
 
-//accuweather API- diplays local weather for the lab and shows a custom icon based on weather icon provided by API:
+//accuweather API
 fetch("https://dataservice.accuweather.com/currentconditions/v1/335668?apikey=WlJdqhjA4jTuM6FQA5uH1Rr7GoyHhKYY&language=en-us&details=true")
 .then(res => res.json()) // parse response as JSON
 .then(data => {
@@ -92,11 +122,38 @@ fetch("https://dataservice.accuweather.com/currentconditions/v1/335668?apikey=Wl
     console.log(`error ${err}`)
 });
 
+//fetch(`https://ncnapier.github.io/instrumentstatus/api.js`)
+// fetch('https://dmpk-instrument-api.herokuapp.com/api/chat')
+// .then(res => res.json()) // parse response as JSON
+// .then(results =>{
+//   let arr = ""
+  
+//   function checkArr(results){
+//     for(i = 0; i < results.length; i++){
+//       const ul = document.getElementById('chatsE')
+//       const li = document.createElement("li")
+//       li.appendChild(document.createTextNode(results[i].statD + ":"  + "          "  + results[i].chats + "(" + results[i].time + ")"))    //+ "(" + currentDate + ")"))
+//       ul.appendChild(li)
+       
+//     }
+//   }
+//   checkArr(results)
+//   console.log(results)
+//   //document.getElementById('chatsE').innerText =  arr
+  
+// })
+// .catch((err, results) => {
+//   console.log(`error ${err}`)
+  
+// });
+ 
+
+// .then(results => {
+//     console.log(results)
+// })
 
 
-
-
-//delete chat: adds an icon that delets a users chat comment when clicked: 
+//delete chat:
 
 const deleteText = document.querySelectorAll('.fa-trash')
 
